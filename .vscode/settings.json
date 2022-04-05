@@ -1,0 +1,6 @@
+{
+  "files.exclude": {
+    "APM-Final": true
+  },
+  "files.autoSave": "afterDelay"
+}
