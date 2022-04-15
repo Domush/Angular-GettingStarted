@@ -1,0 +1,13 @@
+**/*.min.js
+**/*.min.css
+.idea/
+node_modules/
+dist/
+build/
+e2e/
+.*/
+package*.json
+yarn.lock
+*.ps1
+*.log
+*.md

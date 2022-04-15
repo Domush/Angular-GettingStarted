@@ -10,10 +10,7 @@
       </div>
     </div>
     <div class="row mt-3">
-      <div
-        class="toast{{ listFilter.length ? '.show' : '' }} alert-info"
-        role="alert"
-      >
+      <div class="toast{{ listFilter.length ? '.show' : '' }} alert-info" role="alert">
         Showing results containing: <strong>{{ listFilter }}</strong>
       </div>
     </div>
@@ -22,9 +19,7 @@
         <thead>
           <tr>
             <th>
-              <button class="btn btn-primary" (click)="toggleImage()">
-                {{ showImage ? "Hide" : "Show" }} Images
-              </button>
+              <button class="btn btn-primary" (click)="toggleImage()">{{ showImage ? 'Hide' : 'Show' }} Images</button>
             </th>
             <th>Product</th>
             <th>Code</th>
@@ -36,12 +31,7 @@
         <tbody>
           <tr *ngFor="let product of filteredProducts">
             <td>
-              <img
-                *ngIf="showImage"
-                [src]="product.imageUrl"
-                [title]="product.name"
-                [style.width.px]="imageWidth"
-              />
+              <img *ngIf="showImage" [src]="product.imageUrl" [title]="product.name" [style.width.px]="imageWidth" />
               <!-- <img *ngIf='showImage'
                    [src]='product.imageUrl'
                    [title]='product.name'
@@ -54,14 +44,11 @@
                 {{ product.name }}
               </a> -->
             </td>
-            <td>{{ product.code | convertToSpace: "-" }}</td>
+            <td>{{ product.code | convertToSpace: '-' }}</td>
             <td>{{ product.releaseDate }}</td>
-            <td>{{ product.price | currency: "USD":"symbol":"1.2-2" }}</td>
+            <td>{{ product.price | currency: 'USD':'symbol':'1.2-2' }}</td>
             <td>
-              <pm-star-rating
-                [product]="product"
-                (ratingClicked)="onRatingClicked($event)"
-              ></pm-star-rating>
+              <pm-star-rating [product]="product" (ratingClicked)="onRatingClicked($event)"></pm-star-rating>
               <!-- <pm-star [rating]='product.starRating'
                        (ratingClicked)='onRatingClicked($event)'>
               </pm-star> -->
@@ -72,6 +59,6 @@
     </div>
   </div>
 </div>
-<div id="product-alert" class="alert alert-info" *ngIf="alertVisible">
-  {{ alertText }}
+<div id="product-toast" class="alert alert-{{toastType}}" *ngIf="toastVisible">
+  {{ toastText }}
 </div>

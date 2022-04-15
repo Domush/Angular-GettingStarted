@@ -16,6 +16,6 @@ export class StarRatingComponent implements OnChanges {
     this.ratingClicked.emit(this.product);
   }
   ngOnChanges(changes: SimpleChanges): void {
-    this.cropWidth = (this.product.rating * 75) / 5;
+    this.cropWidth = (this.product.starRating * 75) / 5;
   }
 }
