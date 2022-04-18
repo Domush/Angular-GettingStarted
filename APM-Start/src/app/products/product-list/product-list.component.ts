@@ -6,7 +6,7 @@ import { ProductService } from '../product.service';
 @Component({
   selector: 'pm-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css'],
+  styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   constructor(private productService: ProductService) {}
@@ -35,7 +35,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       error: (err) => {
         this.errorMessage = err;
         this.displayToast(err, 'danger');
-      },
+      }
     });
     // .unsubscribe();
     // this.filteredProducts = this.products;

@@ -5,7 +5,7 @@ import { IProduct } from './product';
 import { catchError, tap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ProductService {
   private productUrl = 'api/products/products.json';
@@ -33,5 +33,4 @@ export class ProductService {
     console.error(errorMessage);
     return throwError(() => new Error(errorMessage));
   }
-
 }
