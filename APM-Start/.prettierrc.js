@@ -6,9 +6,9 @@ module.exports = {
   singleQuote: true, // apostrophe
   jsxSingleQuote: false, //Use single quotes in jsx
   trailingComma: 'none', // trailing comma
-  arrowParens: 'always', // Use arrow functions only when necessary ()
+  arrowParens: 'avoid', // Use arrow functions only when necessary ()
   htmlWhitespaceSensitivity: 'css', // html space sensitivity
   endOfLine: 'lf',
   proseWrap: 'never',
-  quoteProps: 'consistent',
+  quoteProps: 'consistent'
 };

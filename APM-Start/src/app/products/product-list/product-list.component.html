@@ -32,17 +32,11 @@
           <tr *ngFor="let product of filteredProducts">
             <td>
               <img *ngIf="showImage" [src]="product.imageUrl" [title]="product.name" [style.width.px]="imageWidth" />
-              <!-- <img *ngIf='showImage'
-                   [src]='product.imageUrl'
-                   [title]='product.name'
-                   [style.width.px]='imageWidth'
-                   [style.margin.px]='imageMargin'> -->
             </td>
             <td class="left">
-              {{ product.name }}
-              <!-- <a [routerLink]="['/products', product.productId]">
+              <a routerLink="/product/{{product.productId}}" >
                 {{ product.name }}
-              </a> -->
+              </a>
             </td>
             <td>{{ product.code | convertToSpace: '-' }}</td>
             <td>{{ product.releaseDate }}</td>
@@ -58,7 +52,4 @@
       </table>
     </div>
   </div>
-</div>
-<div id="product-toast" class="alert alert-{{ toastType }}" *ngIf="toastVisible">
-  {{ toastText }}
 </div>

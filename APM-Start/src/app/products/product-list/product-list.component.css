@@ -2,19 +2,3 @@ thead {
   color: #337ab7;
 }
 
-#product-toast {
-  animation-name: fadeInAndOut;
-  animation-duration: 5s;
-}
-
-@keyframes fadeInAndOut {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}

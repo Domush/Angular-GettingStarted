@@ -2,14 +2,15 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IProduct } from '../product';
 import { ProductService } from '../product.service';
+import { AppComponent } from '../../app.component'
 
 @Component({
-  selector: 'pm-product-list',
+  // selector: 'pm-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private toast: AppComponent) {}
   pageTitle = 'Latest Products';
   private _listFilter: string = '';
   get listFilter(): string {
@@ -22,7 +23,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
   imageWidth = 50;
   showImage = false;
   imageMargin = 2;
-  errorMessage: string = '';
   subProducts!: Subscription;
 
   products: IProduct[] = [];
@@ -33,8 +33,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
         this.products = this.filteredProducts = products;
       },
       error: (err) => {
-        this.errorMessage = err;
-        this.displayToast(err, 'danger');
+        this.toast.displayToast(err, 'danger');
       }
     });
     // .unsubscribe();
@@ -49,21 +48,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
     return this.products.filter((product: IProduct) => product.name.toLocaleLowerCase().includes(filterBy));
   }
 
-  toastText = '';
-  toastType = 'info';
-  toastVisible = false;
   onRatingClicked(activeProduct: any) {
-    this.toastVisible = true;
-    this.toastText = `Product '${activeProduct.name}' (${activeProduct.starRating} rating) clicked`;
-    setTimeout(() => (this.toastVisible = false), 4000);
+    this.toast.displayToast(`Product '${activeProduct.name}' (${activeProduct.starRating} rating) clicked`);
   }
 
-  displayToast(message: string, type: string = 'info') {
-    this.toastVisible = true;
-    this.toastType = type;
-    this.toastText = message;
-    setTimeout(() => (this.toastVisible = false), 4990);
-  }
   toggleImage() {
     this.showImage = !this.showImage;
   }

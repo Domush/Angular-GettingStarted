@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IProduct } from './product';
 import { catchError, tap } from 'rxjs';
 
@@ -9,6 +9,7 @@ import { catchError, tap } from 'rxjs';
 })
 export class ProductService {
   private productUrl = 'api/products/products.json';
+  // productList: IProduct[] = [];
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<IProduct[]> {
@@ -31,6 +32,6 @@ export class ProductService {
       errorMessage = `${err.status} - Detail: ${err.message}`;
     }
     console.error(errorMessage);
-    return throwError(() => new Error(errorMessage));
+    throw new Error(errorMessage);
   }
 }
